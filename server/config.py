@@ -1,5 +1,5 @@
 # Standard library imports
-
+import os
 # Remote library imports
 from flask import Flask
 from flask_cors import CORS
@@ -16,6 +16,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
+
+app.secret_key = b'~`25<q-x84-Axa9tmxb50xc4WX-xafB'
 
 # Define metadata, instantiate db
 metadata = MetaData(naming_convention={

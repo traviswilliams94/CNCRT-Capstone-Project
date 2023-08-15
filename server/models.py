@@ -21,6 +21,8 @@ class User(db.Model, SerializerMixin):
     concerts = db.relationship('Concert', backref='user')
     festivals =  db.relationship('Festival', backref='user')
 
+    serialize_rules = ('-_password_hash', '-concerts', '-festivals', '-created_at', '-updated_at')
+
     @hybrid_property
     def password_hash(self):
         return self._password_hash
