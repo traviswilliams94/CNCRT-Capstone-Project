@@ -33,10 +33,17 @@ function Login ({setCurrentUser}){
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
         })
-        .then((res) => res.json())
-        .then((user) => {setCurrentUser(user)})
-        navigate('/')
-    }
+        .then(res => {
+            if (res.ok) {
+                res.json().then(user => {
+                    setCurrentUser(user)
+                    navigate('/')
+            })
+         } else {
+            alert('Invalid username or password.')
+         }
+        }) 
+}
 
     return (
         <div>
