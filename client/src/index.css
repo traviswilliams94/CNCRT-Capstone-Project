@@ -5,3 +5,8 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+.NavLink {
+  padding-left: 30px;
+  align-items: center;
+  padding-right: 30px;
+}

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ConcertCard from "./ConcertCard";
 
-function ConcertContainer({userConcerts, searchState}){
-    const display = userConcerts.filter(concert => concert.band_name.toLocaleLowerCase().includes(searchState)).map((concert) => (
+function ConcertContainer({yearFilterConcerts, searchState}){
+    const display = yearFilterConcerts.filter(concert => concert.band_name.toLocaleLowerCase().includes(searchState)).map((concert) => (
         <ConcertCard key={concert.id} concert={concert} />
     ))
 

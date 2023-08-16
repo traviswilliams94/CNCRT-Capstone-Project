@@ -78,7 +78,7 @@ class Concerts(Resource):
         new_concert = Concert(
             user_id = session.get('user_id'),
             band_name = data['band_name'],
-            venue = data['venue_id'],
+            venue_id = data['venue_id'],
             opener = data['opener'],
             date = data['date'],
             concert_image = data['concert_image'],

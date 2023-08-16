@@ -25,7 +25,7 @@ function AddConcertForm({currentUser}){
     }
 
     function handleConcertSubmit(event){
-        event.preventDefault();
+        // event.preventDefault();
 
         fetch('/concerts', {
             method: 'POST',
