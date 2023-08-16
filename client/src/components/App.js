@@ -3,10 +3,12 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from './Home';
 import NavBar from './NavBar';
 import Login from './Login';
+import ConcertPage from './ConcertPage'
 
 function App() {
   const [page, setPage] = useState('/login')
-  const [ currentUser, setCurrentUser ] = useState(false);
+  const [currentUser, setCurrentUser] = useState(false);
+  const [allConcerts, setAllConcerts] = useState([])
   const navigate = useNavigate();
 
 
@@ -18,6 +20,14 @@ function App() {
           .then((currentUser) => setCurrentUser(currentUser)
           )}
       });
+  }, []);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:5555/concerts')
+    .then(res => res.json())
+    .then(data => {
+      setAllConcerts(data)
+    });
   }, []);
 
   const handleLogout = () => {
@@ -35,8 +45,9 @@ function App() {
   return <div className="App">
     <NavBar onChangePage={setPage} handleLogout={handleLogout}/>
     <Routes>
-      <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}></Route>
       <Route path='/' element={<Home currentUser={currentUser}/>}></Route>
+      <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}></Route>
+      <Route path='/concerts' element={<ConcertPage allConcerts={allConcerts} currentUser={currentUser}/>}></Route>
     </Routes>
 
   </div>

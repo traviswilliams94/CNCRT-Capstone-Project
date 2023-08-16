@@ -70,7 +70,7 @@ class Logout(Resource):
 class Concerts(Resource):
     def get(self):
         concerts =  [concert.to_dict() for concert in Concert.query.all()]
-        return make_response(user_concerts, 200)
+        return make_response(concerts, 200)
 
     def post(self):
         data  = request.get_json()
@@ -90,7 +90,7 @@ class Concerts(Resource):
         db.session.add(new_concert)
         db.session.commit()
 
-        return make_response(new_concert.to_dict(), 201)
+        return make_response(new_concert.to_dict(rules=('-user_id', '-venue_id')), 201)
 
 class ConcertsByUser(Resource):
     def get(self, user_id):

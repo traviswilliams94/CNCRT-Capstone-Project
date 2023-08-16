@@ -36,18 +36,21 @@ if __name__ == '__main__':
 
         venue_1 = Venue(venue_name='Red Rocks', city='Denver, CO', image='https://res.cloudinary.com/veeps/image/upload/t_1280/v1640740445/assets/qbljrk9p2nxixahvkzw7.jpg')
         venue_2 = Venue(venue_name='Mission Ballroom', city='Denver, CO', image='https://missionballroom.com//img/content/slider_01.jpg')
+        venue_3 = Venue(venue_name='Ogden Theater', city='Denver, CO', image='https://d2uqqhmijd5j2z.cloudfront.net/files/132827/original/OgdenTheater_%281%29.jpg?1482636446')
 
         print('Commiting venue data...')
-        db.session.add_all([venue_1, venue_2])
+        db.session.add_all([venue_1, venue_2, venue_3])
         db.session.commit()
 
         print('Starting concert seed...')
 
         concert_1 = Concert(user_id= 1, venue_id= 1, band_name='boygenius', opener='Illuminati Hotties', concert_image='https://s26162.pcdn.co/wp-content/uploads/2023/01/Screen-Shot-2023-01-20-at-10.50.53-AM.png', setlist_link='https://www.setlist.fm/setlist/boygenius/2023/red-rocks-amphitheatre-morrison-co-5ba40bb0.html', rating= 8.0, comments='Very good!', date='August 5th, 2023')
         concert_2 = Concert(user_id= 2, venue_id= 2, band_name='T-Pain', opener='', concert_image='https://i.scdn.co/image/d24e852887071688cdca28b945d7b82a8ef5d4a8', setlist_link='', rating= 7.6, comments='War pigs cover was the best', date='June 17th, 2023')
+        concert_3 = Concert(user_id= 1, venue_id= 3, band_name='Yves Tumor', opener='', concert_image='https://media.pitchfork.com/photos/63d7f02e29ae57679db5f698/master/w_1280%2Cc_limit/Yves-Tumor.jpg', setlist_link='', rating= 9.2, comments='Unbelievably great!', date='May 15th, 2023')
+        concert_4 = Concert(user_id= 1, venue_id= 2, band_name='Fred Again', opener='Joy Anonymous', concert_image='https://beeyay.com/images/de6a74b0-8e7e-4393-a223-94c62c411acf/details/fred-again.jpg', setlist_link='', rating= 9.9, comments='perfect! first electronic show with Justine which helped convert her', date='October 2nd, 2022')
 
         print('Commiting concert data...')
-        db.session.add_all([concert_1, concert_2])
+        db.session.add_all([concert_1, concert_2, concert_3, concert_4])
         db.session.commit()
 
         print('Starting festival seed...')

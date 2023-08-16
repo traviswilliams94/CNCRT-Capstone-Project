@@ -52,6 +52,8 @@ class Concert(db.Model, SerializerMixin):
     comments = db.Column(db.String)
     date = db.Column(db.String)
 
+    serialize_rules = ('-user_id', '-venue_id')
+
 
 class Venue(db.Model, SerializerMixin):
     __tablename__  = 'venues'
@@ -62,6 +64,8 @@ class Venue(db.Model, SerializerMixin):
     image = db.Column(db.String)
 
     concerts = db.relationship('Concert', backref='venue')
+
+    serialize_rules = ('-concerts',)
 
 
 class Festival(db.Model, SerializerMixin):
@@ -79,6 +83,8 @@ class Festival(db.Model, SerializerMixin):
 
     bands = db.relationship('FestivalBand', backref='festival')
 
+    serialize_rules = ('-user_id', '-bands')
+
 
 class FestivalBand(db.Model, SerializerMixin):
     __tablename__ = 'festival_bands'
@@ -91,4 +97,6 @@ class FestivalBand(db.Model, SerializerMixin):
     rating =  db.Column(db.Float)
     comments = db.Column(db.String)
     headliner = db.Column(db.Boolean)
+
+    serialize_rules = ('-festival_id',)
 
