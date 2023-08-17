@@ -1,4 +1,4 @@
-import React, { useDeferredValue } from "react";
+import React from "react";
 
 function VenueCard({venue}){
 
@@ -7,6 +7,7 @@ function VenueCard({venue}){
             <img src={venue.image} />
             <p><strong>{venue.venue_name}</strong></p>
             <p>{venue.city}</p>
+            <p>ID: {venue.id}</p>
         </div>
     )
 

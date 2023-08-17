@@ -10,3 +10,13 @@
   align-items: center;
   padding-right: 30px;
 }
+
+.concertDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1500px;
+  justify-content: center;
+  margin: auto;
+  padding-top: 75px
+}
+

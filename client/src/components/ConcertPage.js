@@ -18,6 +18,7 @@ function ConcertPage({ allConcerts, currentUser }){
     return (
         <div>
             <UtilitiesBar currentUser={currentUser} searchState={searchState} setSearchState={setSearchState} filterYear={filterYear} setFilterYear={setFilterYear}/>
+            <br />
             <ConcertContainer yearFilterConcerts={yearFilterConcerts} searchState={searchState}/>
         </div>
     )
