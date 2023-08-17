@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ConcertCard from "./ConcertCard";
 import UtilitiesBar from "./UtilitiesBar";
 import ConcertContainer from "./ConcertContainer";
 

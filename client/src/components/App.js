@@ -4,11 +4,13 @@ import Home from './Home';
 import NavBar from './NavBar';
 import Login from './Login';
 import ConcertPage from './ConcertPage'
+import VenuePage from "./VenuePage";
 
 function App() {
   const [page, setPage] = useState('/login')
   const [currentUser, setCurrentUser] = useState(false);
-  const [allConcerts, setAllConcerts] = useState([])
+  const [allConcerts, setAllConcerts] = useState([]);
+  const [allVenues, setAllVenues] = useState([]);
   const navigate = useNavigate();
 
 
@@ -30,6 +32,16 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch('http://127.0.0.1:5555/venues')
+    .then(res => res.json())
+    .then(data => {
+      setAllVenues(data)
+    });
+  }, []);
+
+
+
   const handleLogout = () => {
     fetch("/logout", {method: "DELETE"})
       .then((r) => {
@@ -48,6 +60,7 @@ function App() {
       <Route path='/' element={<Home currentUser={currentUser}/>}></Route>
       <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}></Route>
       <Route path='/concerts' element={<ConcertPage allConcerts={allConcerts} currentUser={currentUser}/>}></Route>
+      <Route path='/venues' element={<VenuePage allVenues={allVenues}/>}></Route>
     </Routes>
 
   </div>
