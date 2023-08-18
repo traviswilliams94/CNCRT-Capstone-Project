@@ -1,25 +1,21 @@
 // import React, { useState } from "react";
 // import { Card, Icon, Image, Button, Modal } from 'semantic-ui-react';
+// import ConcertCard from "./ConcertCard";
 
-// function ConcertModal({modalOpen, setModalOpen, concert, openModal}){
+// function ConcertModal({ concert }){
 
 // const [modalOpen, setModalOpen] = useState(false)
     
 
-//     function openModal(){
-//         setModalOpen(true) 
-          
-//     }
-
 //     return (
-//         <div>
+        
         
 //         <Modal
 //             closeIcon
 //             onClose={() => setModalOpen(false)}
 //             onOpen={() => setModalOpen(true)}
 //             open={modalOpen}
-//             trigger={}
+//             trigger={<ConcertCard />}
 
 //         >
 //             <Modal.Header>{concert.band_name}</Modal.Header>
@@ -36,7 +32,7 @@
 //                 </Modal.Description>
 //             </Modal.Content>
 //         </Modal>
-//         </div>
+        
 //     )
 // }
 

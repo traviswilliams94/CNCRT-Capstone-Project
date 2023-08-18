@@ -1,10 +1,26 @@
 import React, {useState} from "react";
-import { Card, Icon, Image, Button, Modal } from 'semantic-ui-react';
+import { Card, Icon, Image, Button, Modal, Header } from 'semantic-ui-react';
 import ConcertModal from "./ConcertModal";
 
 function ConcertCard({concert}){
 
     const [showButton, setShowButton] = useState({display: 'none'});
+    const [modal, setModal] = useState(false);
+
+    function toggleModal(){
+        setModal(!modal);
+    };
+
+    function deleteConcert(){
+
+        fetch(`/concerts/${concert.id}`, {
+            method: "DELETE",
+        })
+        .then((r) => r.json())
+        .then(setModal(false))
+        .then(() => console.log("deleted!"))
+        .then(window.location.reload(true));
+    }
 
     
     return (
@@ -47,13 +63,31 @@ function ConcertCard({concert}){
             <Button color="blue" icon>
                 <Icon name="edit" />
             </Button>
-            <Button color='red' icon>
+            <Button onClick={toggleModal} color='red' icon>
                 <Icon name="trash alternate" />
             </Button>
             </div>
             </Card>
+            </div>
+            {modal ? 
+        <div className="modal">
+          <div onClick={toggleModal} className="overlay">
+          <div className="modal-content">
+            <h3>Are you sure you want to delete the {concert.band_name} concert?</h3>
+            <p>
+              Once deleted, it cannot be recovered.
+            </p>
+            <button className="keepmodalbutton" onClick={toggleModal}>
+              No, Keep
+            </button>
             
-        </div>
+            <button className="deletemodalbutton" onClick={deleteConcert}>
+              Yes, Delete
+            </button>
+          </div>
+          </div>
+        </div> : null
+      }
         </div>
     )
 }
