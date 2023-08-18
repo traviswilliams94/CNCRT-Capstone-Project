@@ -1,14 +1,19 @@
 import React, {useState} from "react";
 import { Card, Icon, Image, Button, Modal, Header } from 'semantic-ui-react';
-import ConcertModal from "./ConcertModal";
+import UpdateConcertForm from "./UpdateConcertForm";
 
 function ConcertCard({concert}){
 
     const [showButton, setShowButton] = useState({display: 'none'});
-    const [modal, setModal] = useState(false);
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [updateModal, setUpdateModal] = useState(false)
 
-    function toggleModal(){
-        setModal(!modal);
+    function toggleDeleteModal(){
+        setDeleteModal(!deleteModal);
+    };
+
+    function toggleUpdateModal(){
+        setUpdateModal(!updateModal)
     };
 
     function deleteConcert(){
@@ -17,7 +22,7 @@ function ConcertCard({concert}){
             method: "DELETE",
         })
         .then((r) => r.json())
-        .then(setModal(false))
+        .then(setDeleteModal(false))
         .then(() => console.log("deleted!"))
         .then(window.location.reload(true));
     }
@@ -60,24 +65,24 @@ function ConcertCard({concert}){
                 </Card.Description>
             </Card.Content>
             <div style={showButton} >
-            <Button color="blue" icon>
+            <Button onClick={toggleUpdateModal} color="blue" icon>
                 <Icon name="edit" />
             </Button>
-            <Button onClick={toggleModal} color='red' icon>
+            <Button onClick={toggleDeleteModal} color='red' icon>
                 <Icon name="trash alternate" />
             </Button>
             </div>
             </Card>
             </div>
-            {modal ? 
+            {deleteModal ? 
         <div className="modal">
-          <div onClick={toggleModal} className="overlay">
+          <div onClick={toggleDeleteModal} className="overlay">
           <div className="modal-content">
             <h3>Are you sure you want to delete the {concert.band_name} concert?</h3>
             <p>
               Once deleted, it cannot be recovered.
             </p>
-            <button className="keepmodalbutton" onClick={toggleModal}>
+            <button className="keepmodalbutton" onClick={toggleDeleteModal}>
               No, Keep
             </button>
             
@@ -88,6 +93,26 @@ function ConcertCard({concert}){
           </div>
         </div> : null
       }
+            {updateModal ?
+            <div className="modal">
+            <div  className="overlay">
+            <div className="modal-content">
+              <h3>Update the {concert.band_name} concert:</h3>
+              <strong>Note: </strong>
+              <p>• Only adjust the fields you want to update</p>
+              <div>
+                <UpdateConcertForm concert={concert} setUpdateModal={setUpdateModal}/>
+              </div>
+              {/* <button className="updatemodalbutton" onClick={toggleUpdateModal}>
+                Update
+              </button> */}
+              <button onClick={toggleUpdateModal}>
+                Exit
+              </button>
+            </div>
+            </div>
+          </div> : null
+            }
         </div>
     )
 }
