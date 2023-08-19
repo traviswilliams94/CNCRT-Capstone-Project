@@ -148,7 +148,7 @@ class Venues(Resource):
 
 class Festivals(Resource):
     def get(self):
-        festivals =  [festival.to_dict() for festival in Festival.query.all()]
+        festivals = [festival.to_dict() for festival in Festival.query.all()]
         return make_response(festivals, 200)
 
     def post(self):
@@ -171,6 +171,10 @@ class Festivals(Resource):
         return make_response(new_festival.to_dict(), 201)
 
 class FestivalBands(Resource):
+    def get(self):
+        festivalBands = [festivalBand.to_dict() for festivalBand in FestivalBand.query.all()]
+        return make_response(festivalBands, 200)
+
     def post(self):
         data = request.get_json()
 

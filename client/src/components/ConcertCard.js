@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Card, Icon, Image, Button, Modal, Header } from 'semantic-ui-react';
+import { Card, Icon, Image, Button } from 'semantic-ui-react';
 import UpdateConcertForm from "./UpdateConcertForm";
 
 function ConcertCard({concert}){
@@ -95,11 +95,12 @@ function ConcertCard({concert}){
       }
             {updateModal ?
             <div className="modal">
-            <div  className="overlay">
+            <div className="overlay">
             <div className="modal-content">
               <h3>Update the {concert.band_name} concert:</h3>
-              <strong>Note: </strong>
+              <strong>Notes: </strong>
               <p>• Only adjust the fields you want to update</p>
+              <p>• Add new comments after existing commenets to keep the existing</p>
               <div>
                 <UpdateConcertForm concert={concert} setUpdateModal={setUpdateModal}/>
               </div>

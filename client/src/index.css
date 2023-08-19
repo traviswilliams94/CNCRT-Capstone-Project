@@ -52,8 +52,20 @@
   background: #f1f1f1;
   padding: 14px 28px;
   border-radius: 3px;
-  max-width: 600px;
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+  max-width: 1000px;
   min-width: 300px;
+  
+}
+
+.festBandDisplay{
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  justify-content: left;
+  margin: auto;
+  padding-top: 75px
 }
 
 .keepmodalbutton {

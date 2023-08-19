@@ -13,6 +13,7 @@ function App() {
   const [allConcerts, setAllConcerts] = useState([]);
   const [allVenues, setAllVenues] = useState([]);
   const [allFestivals, setAllFestivals] = useState([]);
+  const [allFestBands, setAllFestBands] = useState([])
   const navigate = useNavigate();
 
 
@@ -50,6 +51,14 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch('http://127.0.0.1:5555/festivalbands')
+    .then(res => res.json())
+    .then(data => {
+      setAllFestBands(data)
+    });
+  }, []);
+
 
 
   const handleLogout = () => {
@@ -70,7 +79,7 @@ function App() {
       <Route path='/' element={<Home currentUser={currentUser}/>}></Route>
       <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}></Route>
       <Route path='/concerts' element={<ConcertPage allConcerts={allConcerts} currentUser={currentUser} allVenues={allVenues}/>}></Route>
-      <Route path='/festivals' element={<FestivalPage allFestivals={allFestivals} currentUser={currentUser}/>}></Route>
+      <Route path='/festivals' element={<FestivalPage allFestivals={allFestivals} currentUser={currentUser} allFestBands={allFestBands}/>}></Route>
       <Route path='/venues' element={<VenuePage allVenues={allVenues}/>}></Route>
     </Routes>
 

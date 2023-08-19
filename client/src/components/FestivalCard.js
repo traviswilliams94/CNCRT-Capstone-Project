@@ -1,8 +1,24 @@
 import React, {useState} from "react";
-import { Card, Icon, Image, Button, Modal, Header } from 'semantic-ui-react';
+import { Card, Icon, Image, Button } from 'semantic-ui-react';
+import BandCard from "./BandCard";
 
-function FestivalCard({festival}){
+function FestivalCard({festival, allFestBands}){
     const [festivalModal, setFestivalModal] = useState(false)
+
+    const festivalBands = allFestBands.filter(
+        (festivalBand) => festivalBand.festival.id === festival.id
+    );
+
+    const bandCards = festivalBands.map((band) => (
+        <BandCard key={band.id} band={band} />
+    ))
+
+    function toggleFestivalModal(){
+        setFestivalModal(!festivalModal)
+    }
+
+   
+    
 
     return (
         <div>
@@ -27,10 +43,35 @@ function FestivalCard({festival}){
                     <strong>Comments: </strong>{festival.comments}
                 </Card.Description>
             </Card.Content>
-            <Button primary>Show Details</Button>
+            <Button onClick={toggleFestivalModal} primary>Show Details</Button>
             </Card>
-
             </div>
+            {festivalModal ? 
+            <div className="modal">
+                <div className="overlay">
+                    <div className="modal-content">
+                        <h2>{festival.festival_name}</h2>
+                        <img src={festival.festival_image} alt={festival.festival_image} style={{ width: '50%', height: '50%', objectFit: 'cover' }}/>
+                        <br />
+                        <span><strong>When: </strong>{festival.start_date} - {festival.end_date}</span>
+                        <br />
+                        <span><strong>Where: </strong>{festival.city}</span>
+                        <br />
+                        <br />
+                        <span><strong>Rating:</strong> {festival.rating}</span>
+                        <br />
+                        <br />
+                        <span><strong>Comments: </strong>{festival.comments}</span>
+                        <br />
+                        <br />
+                        <h3>Artists: </h3>
+                        <button>+</button>
+                        <div className="festBandDisplay">{bandCards}</div>
+                        <button onClick={toggleFestivalModal}>Exit</button>
+
+                    </div>
+                </div>
+            </div> : null}
         </div>
     )
 
