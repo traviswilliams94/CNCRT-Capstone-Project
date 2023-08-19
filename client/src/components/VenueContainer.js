@@ -8,7 +8,7 @@ function VenueContainer({orderedVenues}){
     ))
     
     return(
-        <div>
+        <div className="concertDisplay">
             {displayVenues}
         </div>
     )
