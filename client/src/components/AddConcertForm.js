@@ -41,7 +41,7 @@ function AddConcertForm({currentUser}){
 
     return(
         <div>
-            <form id='addnewconcert' onSubmit={handleConcertSubmit}>
+            <form className='postForm' onSubmit={handleConcertSubmit}>
                 <label>Artist Name: </label>
                 <input
                     type='text'

@@ -32,7 +32,7 @@ function AddVenueForm(){
 
     return (
         <div>
-            <form id='addVenueForm' onSubmit={handleVenueSubmit}>
+            <form className='postForm' onSubmit={handleVenueSubmit}>
                 <label>Venue Name: </label>
                 <input
                     type='text'

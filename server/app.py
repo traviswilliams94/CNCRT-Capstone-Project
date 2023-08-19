@@ -149,7 +149,7 @@ class Venues(Resource):
 class Festivals(Resource):
     def get(self):
         festivals =  [festival.to_dict() for festival in Festival.query.all()]
-        return make_response(user_festivals, 200)
+        return make_response(festivals, 200)
 
     def post(self):
         data = request.get_json()
@@ -161,7 +161,7 @@ class Festivals(Resource):
             start_date = data['start_date'],
             end_date = data['end_date'],
             rating = data['rating'],
-            image =  data['image'],
+            festival_image =  data['festival_image'],
             comments  =  data['comments'],
         )
 

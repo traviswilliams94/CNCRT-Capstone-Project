@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ConcertCard from "./ConcertCard";
-import ConcertModal from "./ConcertModal";
+
 
 function ConcertContainer({yearFilterConcerts, searchState}){
 
@@ -12,7 +12,7 @@ function ConcertContainer({yearFilterConcerts, searchState}){
 
     return(
         <div className="concertDisplay">
-            
+
             {display}
             
         </div>

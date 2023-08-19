@@ -19,7 +19,7 @@ function UtilitiesBar({currentUser, searchState, setSearchState, filterYear, set
     return (
         <div>
             <br />
-            <div id='searchbar'>
+            <div className='searchbar'>
                 <strong>Search By Artist: </strong>
                 <input value={searchState} onChange={handleSearch} />
             </div>
