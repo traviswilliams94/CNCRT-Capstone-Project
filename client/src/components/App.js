@@ -69,7 +69,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home currentUser={currentUser}/>}></Route>
       <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}></Route>
-      <Route path='/concerts' element={<ConcertPage allConcerts={allConcerts} currentUser={currentUser}/>}></Route>
+      <Route path='/concerts' element={<ConcertPage allConcerts={allConcerts} currentUser={currentUser} allVenues={allVenues}/>}></Route>
       <Route path='/festivals' element={<FestivalPage allFestivals={allFestivals} currentUser={currentUser}/>}></Route>
       <Route path='/venues' element={<VenuePage allVenues={allVenues}/>}></Route>
     </Routes>
