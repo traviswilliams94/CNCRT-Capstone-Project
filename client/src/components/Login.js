@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
+import Signup from './Signup';
 
 function Login ({setCurrentUser}){
     const navigate = useNavigate();
+    const [showSignup, setShowSignup] = useState(false)
 
     const [formData, setFormData] = useState({
         username: '',
@@ -44,6 +46,9 @@ function Login ({setCurrentUser}){
          }
         }) 
 }
+    function toggleShowSignup(){
+        setShowSignup(!showSignup)
+    }
 
     return (
         <div>
@@ -67,6 +72,11 @@ function Login ({setCurrentUser}){
                 />
                 <button  type='submit'>Login</button>
             </form>
+            <br />
+            <h3>Dont have an account?</h3>
+            <button onClick={toggleShowSignup}>Sign Up!</button>
+            {showSignup ? 
+            <Signup setCurrentUser={setCurrentUser}/> : null}
         </div>
     )
 }

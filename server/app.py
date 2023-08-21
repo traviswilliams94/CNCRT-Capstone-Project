@@ -13,11 +13,11 @@ from models import User, Concert, Venue, Festival, FestivalBand
 
 
 # Views go here!
-class Signup(Resource):
+class UserSignup(Resource):
 
     def post(self):
         data = request.get_json()
-        print(data)
+        
         try:
             new_user = User(
                 username = data['username'],
@@ -204,7 +204,7 @@ api.add_resource(Festivals, '/festivals')
 api.add_resource(FestivalBands, '/festivalbands')
 
 
-api.add_resource(Signup, '/signup', endpoint='signup')
+api.add_resource(UserSignup, '/users')
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 api.add_resource(Login, '/login', endpoint='login')
 api.add_resource(Logout, '/logout', endpoint='logout')
