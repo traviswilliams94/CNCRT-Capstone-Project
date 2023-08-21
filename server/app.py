@@ -182,7 +182,7 @@ class FestivalBands(Resource):
             festival_id = data['festival_id'],
             band_name = data['band_name'],
             headliner = data['headliner'],
-            band_image = data['image'],
+            band_image = data['band_image'],
             setlist_link = data['setlist_link'],
             rating = data['rating'],
             comments = data['comments'],

@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import { Card, Icon, Image, Button } from 'semantic-ui-react';
 import BandCard from "./BandCard";
+import AddFestBandForm from "./AddFestBandForm ";
 
 function FestivalCard({festival, allFestBands}){
     const [festivalModal, setFestivalModal] = useState(false)
+    const [addBand, setAddBand] = useState(false)
 
     const festivalBands = allFestBands.filter(
         (festivalBand) => festivalBand.festival.id === festival.id
@@ -17,6 +19,9 @@ function FestivalCard({festival, allFestBands}){
         setFestivalModal(!festivalModal)
     }
 
+    function toggleAddBand() {
+        setAddBand(!addBand)
+    }
    
     
 
@@ -65,13 +70,24 @@ function FestivalCard({festival, allFestBands}){
                         <br />
                         <br />
                         <h3>Artists: </h3>
-                        <button>+</button>
+                        <button onClick={toggleAddBand}>+</button>
                         <div className="festBandDisplay">{bandCards}</div>
                         <button onClick={toggleFestivalModal}>Exit</button>
 
                     </div>
                 </div>
             </div> : null}
+            {addBand ?  
+                <div className="modal">
+                    <div className="overlay">
+                        <div className="modal-content">
+                            <h3>Add an Artist you saw at {festival.festival_name}</h3>
+                            <AddFestBandForm festival={festival} addBand={addBand} setAddBand={setAddBand}/>
+                            <button onClick={toggleAddBand}>Exit</button>
+                        </div>
+                    </div>
+                </div>
+            : null}
         </div>
     )
 
