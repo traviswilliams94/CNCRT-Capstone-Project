@@ -6,6 +6,7 @@ import Login from './Login';
 import ConcertPage from './ConcertPage';
 import VenuePage from "./VenuePage";
 import FestivalPage from "./FestivalPage";
+import AccountPage from "./AccountPage";
 
 function App() {
   const [page, setPage] = useState('/login')
@@ -16,6 +17,13 @@ function App() {
   const [allFestBands, setAllFestBands] = useState([])
   const navigate = useNavigate();
 
+  const userConcerts = allConcerts.filter(
+    (concert) => concert.user.id === currentUser.id
+);
+
+const userFestivals = allFestivals.filter(
+  (festival) => festival.user.id === currentUser.id
+);
 
   useEffect(() => {
     fetch("/check_session")
@@ -78,9 +86,10 @@ function App() {
     <Routes>
       <Route path='/' element={<Home currentUser={currentUser}/>}></Route>
       <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}></Route>
-      <Route path='/concerts' element={<ConcertPage allConcerts={allConcerts} currentUser={currentUser} allVenues={allVenues}/>}></Route>
-      <Route path='/festivals' element={<FestivalPage allFestivals={allFestivals} currentUser={currentUser} allFestBands={allFestBands}/>}></Route>
+      <Route path='/concerts' element={<ConcertPage userConcerts={userConcerts} currentUser={currentUser} allVenues={allVenues}/>}></Route>
+      <Route path='/festivals' element={<FestivalPage userFestivals={userFestivals} currentUser={currentUser} allFestBands={allFestBands}/>}></Route>
       <Route path='/venues' element={<VenuePage allVenues={allVenues}/>}></Route>
+      <Route path='/account' element={<AccountPage currentUser={currentUser} userConcerts={userConcerts} userFestivals={userFestivals} handleLogout={handleLogout}/>}></Route>
     </Routes>
 
   </div>

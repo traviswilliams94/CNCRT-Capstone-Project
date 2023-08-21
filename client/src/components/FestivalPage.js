@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import FestivalUtilities from "./FestivalUtilities";
 import FestivalContainer from "./FestivalContainer";
 
-function FestivalPage({currentUser, allFestivals, allFestBands}){
+function FestivalPage({currentUser,userFestivals, allFestBands}){
     const [festSearchState, setFestSearchState] =  useState('')
 
-    const userFestivals = allFestivals.filter(
-        (festival) => festival.user.id === currentUser.id
-    );
+    
 
     return (
         <div>
