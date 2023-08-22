@@ -1,7 +1,19 @@
 import React from "react";
 import {Card, Image} from 'semantic-ui-react';
+import { format, parse } from 'date-fns';
 
 function TimelineCard({concert}){
+
+    // const {band_name, concert_image, date, venue, rating} = concert
+
+    // const realDate = (date) => {
+    //     const array =[]
+    //     array.push(`${date}T00:00:00`)
+    //     return array[0]
+    // };
+
+    const realDate = parse(concert.date, 'yyyy-MM-dd', new Date())
+    const displayDate = format(realDate, "MMMM d, yyyy")
 
         return (
             <div className="tl-item">
@@ -14,7 +26,7 @@ function TimelineCard({concert}){
                 </div>
                     <Card.Content>
                         <Card.Header>{concert.band_name}</Card.Header>
-                        <Card.Meta>{concert.date}</Card.Meta>
+                        <Card.Meta>{displayDate}</Card.Meta>
                         <Card.Description>
                             <strong>Where: </strong>{concert.venue.venue_name}
                             <br />

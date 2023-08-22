@@ -4,22 +4,31 @@ import TimelineCard from "./TimelineCard";
 
 function Home({ currentUser, userConcerts }){
 
-    const timelineConcerts = (userConcerts.slice(0).sort((a, b) => a.date.localeCompare(b.date))).reverse()
+    const timelineConcerts = userConcerts.sort((a, b) => new Date(...a.date.split('/').reverse()) - new Date(...b.date.split('/').reverse()));
 
-    const evenTimelineConcerts = timelineConcerts.filter((a, i) => i % 2 === 0)
-    const oddTimelineConcerts = timelineConcerts.filter((a, i) => i % 2 !== 0)
+    const timelineDisplay = timelineConcerts.map((concert, i) => {
+        if(i % 2 === 0){
+            return  <div className="container left"><TimelineCard key={concert.id} concert={concert} /></div>;
+        }
+        else {
+            return <div className="container right"><TimelineCard key={concert.id} concert={concert} /></div>;
+        }
+    })
 
-    const leftTimeline = evenTimelineConcerts.map((concert) => (
-        <div className="container left">
-            <TimelineCard key={concert.id} concert={concert} />
-        </div>
-    ))
+    // const evenTimelineConcerts = timelineConcerts.filter((a, i) => i % 2 === 0)
+    // const oddTimelineConcerts = timelineConcerts.filter((a, i) => i % 2 !== 0)
 
-    const rightTimeline = oddTimelineConcerts.map((concert) => (
-        <div className="container right">
-            <TimelineCard key={concert.id} concert={concert} />
-            </div>
-    ))
+    // const leftTimeline = evenTimelineConcerts.map((concert) => (
+    //     <div className="container left">
+    //         <TimelineCard key={concert.id} concert={concert} />
+    //     </div>
+    // ))
+
+    // const rightTimeline = oddTimelineConcerts.map((concert) => (
+    //     <div className="container right">
+    //         <TimelineCard key={concert.id} concert={concert} />
+    //         </div>
+    // ))
 
     return (
         <div className="home">
@@ -28,11 +37,7 @@ function Home({ currentUser, userConcerts }){
                 <h3>Your Timeline: </h3>
             </div>
             <div className="timeline">
-            
-                {leftTimeline}
-         
-            
-                {rightTimeline}
+                {timelineDisplay}
             </div>
         </div>
     )

@@ -1,12 +1,16 @@
 import React, {useState} from "react";
 import { Card, Icon, Image, Button } from 'semantic-ui-react';
 import UpdateConcertForm from "./UpdateConcertForm";
+import { format, parse } from 'date-fns';
 
 function ConcertCard({concert}){
 
     const [showButton, setShowButton] = useState({display: 'none'});
     const [deleteModal, setDeleteModal] = useState(false);
-    const [updateModal, setUpdateModal] = useState(false)
+    const [updateModal, setUpdateModal] = useState(false);
+
+    const realDate = parse(concert.date, 'yyyy-MM-dd', new Date())
+    const displayDate = format(realDate, "MMMM d, yyyy")
 
     function toggleDeleteModal(){
         setDeleteModal(!deleteModal);
@@ -49,7 +53,7 @@ function ConcertCard({concert}){
                 <Card.Meta>
                     <span><strong>{concert.opener}</strong></span>
                     <br />
-                    <span>{concert.date}</span>
+                    <span>{displayDate}</span>
                 </Card.Meta>
                 <Card.Description>
                 <strong>{concert.venue.venue_name}</strong>
