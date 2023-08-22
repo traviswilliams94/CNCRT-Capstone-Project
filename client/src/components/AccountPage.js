@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import AboutModal from './AboutModal';
 
 function AccountPage({currentUser, handleLogout, userConcerts, userFestivals}){
+    const [learnMore, setLearnMore] = useState(false)
+
+    function toggleLearnMore(){
+        setLearnMore(!learnMore)
+    }
 
     return (
         <div>
@@ -16,6 +21,12 @@ function AccountPage({currentUser, handleLogout, userConcerts, userFestivals}){
             <p>Total Festivals: {userFestivals.length}</p>
             <br />
             <button onClick={handleLogout} style={{backgroundColor: 'red'}}>Logout</button>
+            <br />
+            <br />
+            <button onClick={toggleLearnMore}>Learn More About CNCRT</button>
+            {learnMore ?
+            <AboutModal toggleLearnMore={toggleLearnMore} />
+            : null}
             
         </div>
     )
