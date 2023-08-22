@@ -84,7 +84,7 @@ const userFestivals = allFestivals.filter(
   return <div className="App">
     <NavBar onChangePage={setPage} handleLogout={handleLogout}/>
     <Routes>
-      <Route path='/' element={<Home currentUser={currentUser}/>}></Route>
+      <Route path='/' element={<Home currentUser={currentUser} userConcerts={userConcerts} />}></Route>
       <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}></Route>
       <Route path='/concerts' element={<ConcertPage userConcerts={userConcerts} currentUser={currentUser} allVenues={allVenues}/>}></Route>
       <Route path='/festivals' element={<FestivalPage userFestivals={userFestivals} currentUser={currentUser} allFestBands={allFestBands}/>}></Route>
