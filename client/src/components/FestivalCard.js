@@ -129,8 +129,8 @@ function FestivalCard({festival, allFestBands}){
                                 value={updateFest.end_date}
                             />
                             <button type='submit'>Update Fetsival Dates</button>
-                        </form>
-                        <button onClick={toggleFestivalModal}>Exit</button> */}
+                        </form> */}
+                        <button onClick={toggleFestivalModal}>Exit</button>
 
                     </div>
                         
