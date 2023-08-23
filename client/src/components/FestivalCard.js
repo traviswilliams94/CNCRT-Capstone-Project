@@ -1,11 +1,51 @@
 import React, {useState} from "react";
-import { Card, Icon, Image, Button } from 'semantic-ui-react';
+import { Card, Image, Button } from 'semantic-ui-react';
 import BandCard from "./BandCard";
 import AddFestBandForm from "./AddFestBandForm ";
+import { format, parse } from 'date-fns';
 
 function FestivalCard({festival, allFestBands}){
     const [festivalModal, setFestivalModal] = useState(false)
     const [addBand, setAddBand] = useState(false)
+    const realStartDate = parse(festival.start_date, 'yyyy-MM-dd', new Date())
+    const realEndDate = parse(festival.end_date, 'yyyy-MM-dd', new Date())
+    const displayStartDate = format(realStartDate, "MMMM d, yyyy")
+    const displayEndDate = format(realEndDate, "MMMM d, yyyy")
+
+    // const [updateFest, setUpdateFest] = useState({
+    //     festival_name: festival.festival_name,
+    //     city: festival.city,
+    //     start_date: festival.start_date,
+    //     end_date: festival.end_date,
+    //     festival_image: festival.festival_image,
+    //     rating: festival.rating,
+    //     comments: festival.comments,
+    // })
+
+    // function handleUpdateChange(event){
+    //     const name = event.target.name;
+    //     let value = event.target.value
+
+    //     setUpdateFest({
+    //         ...updateFest,
+    //         [name]: value,
+    //     });
+    // }
+
+    // function handleUpdateSubmit(){
+    //     fetch(`festivals/${festival.id}`, {
+    //         method: "PATCH",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(
+    //             updateFest
+    //         ),
+    //     })
+    //     .then((res) => res.json())
+    //     .then(setFestivalModal(false))
+    //     .then(window.location.reload(true));
+    // }
 
     const festivalBands = allFestBands.filter(
         (festivalBand) => festivalBand.festival.id === festival.id
@@ -24,6 +64,7 @@ function FestivalCard({festival, allFestBands}){
     }
    
     
+    
 
     return (
         <div>
@@ -38,7 +79,7 @@ function FestivalCard({festival, allFestBands}){
             <Card.Content>
                 <Card.Header>{festival.festival_name}</Card.Header>
                 <Card.Meta>
-                    <span>{festival.start_date} - {festival.end_date}</span>
+                    <span>{displayStartDate} - {displayEndDate}</span>
                 </Card.Meta>
                 <Card.Description>
                     <strong>{festival.city}</strong>
@@ -58,7 +99,7 @@ function FestivalCard({festival, allFestBands}){
                         <h2>{festival.festival_name}</h2>
                         <img src={festival.festival_image} alt={festival.festival_image} style={{ width: '50%', height: '50%', objectFit: 'cover' }}/>
                         <br />
-                        <span><strong>When: </strong>{festival.start_date} - {festival.end_date}</span>
+                        <span><strong>When: </strong>{displayStartDate} - {displayEndDate}</span>
                         <br />
                         <span><strong>Where: </strong>{festival.city}</span>
                         <br />
@@ -72,9 +113,27 @@ function FestivalCard({festival, allFestBands}){
                         <h3>Artists: </h3>
                         <button onClick={toggleAddBand}>+</button>
                         <div className="festBandDisplay">{bandCards}</div>
-                        <button onClick={toggleFestivalModal}>Exit</button>
+                        {/* <form onSubmit={handleUpdateSubmit}>
+                            <label>Start Date: </label>
+                            <input
+                                type='text'
+                                name='start_date'
+                                onChange={handleUpdateChange}
+                                value={updateFest.start_date}
+                            />
+                            <label>End Date: </label>
+                            <input 
+                                type='text'
+                                name='end_date'
+                                onChange={handleUpdateChange}
+                                value={updateFest.end_date}
+                            />
+                            <button type='submit'>Update Fetsival Dates</button>
+                        </form>
+                        <button onClick={toggleFestivalModal}>Exit</button> */}
 
                     </div>
+                        
                 </div>
             </div> : null}
             {addBand ?  

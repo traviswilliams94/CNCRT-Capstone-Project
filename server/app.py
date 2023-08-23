@@ -170,6 +170,21 @@ class Festivals(Resource):
 
         return make_response(new_festival.to_dict(), 201)
 
+class FestivalsByID(Resource):
+    def patch(self, id):
+        festival_to_update = Festival.query.filter(Festival.id == id).first()
+        if festival_to_update:
+            for key in request.json:
+                setattr(festival_to_update, key, request.json[key])
+
+            db.session.add(festival_to_update)
+            db.session.commit()
+
+            return make_response(festival_to_update.to_dict(), 202)
+
+        else:
+            return {'error': 'Festival not found'}, 404
+
 class FestivalBands(Resource):
     def get(self):
         festivalBands = [festivalBand.to_dict() for festivalBand in FestivalBand.query.all()]
@@ -202,6 +217,7 @@ api.add_resource(ConcertsByID, '/concerts/<int:id>')
 api.add_resource(Venues,  '/venues')
 api.add_resource(Festivals, '/festivals')
 api.add_resource(FestivalBands, '/festivalbands')
+api.add_resource(FestivalsByID, '/festivals/<int:id>')
 
 
 api.add_resource(UserSignup, '/users')
