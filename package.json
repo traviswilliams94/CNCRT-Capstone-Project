@@ -1,8 +1,11 @@
 {
   "dependencies": {
+    "@mui/material": "^5.14.6",
+    "@mui/styled-engine-sc": "^5.14.6",
     "date-fns": "^2.30.0",
     "recoil": "^0.7.7",
     "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.4"
+    "semantic-ui-react": "^2.1.4",
+    "styled-components": "^5.3.11"
   }
 }

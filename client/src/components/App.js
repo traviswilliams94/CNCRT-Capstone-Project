@@ -8,7 +8,7 @@ import VenuePage from "./VenuePage";
 import FestivalPage from "./FestivalPage";
 import AccountPage from "./AccountPage";
 import { useRecoilState } from "recoil";
-import { allVenuesAtom } from "../lib/atoms";
+import { allVenuesAtom, festBandsAtom } from "../lib/atoms";
 
 function App() {
   const [page, setPage] = useState('/login')
@@ -16,7 +16,7 @@ function App() {
   const [allConcerts, setAllConcerts] = useState([]);
   const [allVenues, setAllVenues] = useRecoilState(allVenuesAtom);
   const [allFestivals, setAllFestivals] = useState([]);
-  const [allFestBands, setAllFestBands] = useState([])
+  const [allFestBands, setAllFestBands] = useRecoilState(festBandsAtom)
   const navigate = useNavigate();
 
   const userConcerts = allConcerts.filter(
@@ -84,12 +84,12 @@ const userFestivals = allFestivals.filter(
     if (!currentUser) return <Login setCurrentUser={setCurrentUser}/>
 
   return <div className="App">
-    <NavBar onChangePage={setPage} handleLogout={handleLogout}/>
+    <NavBar onChangePage={setPage} />
     <Routes>
       <Route path='/' element={<Home currentUser={currentUser} userConcerts={userConcerts} userFestivals={userFestivals} />}></Route>
       <Route path='/login' element={<Login setCurrentUser={setCurrentUser}/>}></Route>
       <Route path='/concerts' element={<ConcertPage userConcerts={userConcerts} currentUser={currentUser} />}></Route>
-      <Route path='/festivals' element={<FestivalPage userFestivals={userFestivals} currentUser={currentUser} allFestBands={allFestBands}/>}></Route>
+      <Route path='/festivals' element={<FestivalPage userFestivals={userFestivals} currentUser={currentUser} />}></Route>
       <Route path='/venues' element={<VenuePage />}></Route>
       <Route path='/account' element={<AccountPage currentUser={currentUser} userConcerts={userConcerts} userFestivals={userFestivals} handleLogout={handleLogout}/>}></Route>
     </Routes>

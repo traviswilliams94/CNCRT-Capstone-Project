@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import Signup from './Signup';
+import {Button} from 'semantic-ui-react'
+
 
 function Login ({setCurrentUser}){
     const navigate = useNavigate();
@@ -51,32 +53,46 @@ function Login ({setCurrentUser}){
     }
 
     return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleLoginSubmit}>
-                <label>Username: </label>
-                <input
-                    type='text'
-                    name='username'
-                    onChange={handleLoginChange}
-                    value={formData.username}
-                    placeholder='username'
-                />
-                <label>Password: </label>
-                <input
-                    type='text'
-                    name='password'
-                    onChange={handleLoginChange}
-                    value={formData.password}
-                    placeholder='password'
-                />
-                <button  type='submit'>Login</button>
-            </form>
-            <br />
-            <h3>Dont have an account?</h3>
-            <button onClick={toggleShowSignup}>Sign Up!</button>
-            {showSignup ? 
-            <Signup setCurrentUser={setCurrentUser}/> : null}
+        <div className='loginPage'>
+            <div className='loginHeader'>
+                
+            </div>
+            <div className='loginContent'>
+                <div className='loginForm'>
+                <form class='ui form' onSubmit={handleLoginSubmit}>
+                    <div class='field'>
+                    <label style={{color: 'white'}}>Username: </label>
+                    <input
+                        type='text'
+                        name='username'
+                        onChange={handleLoginChange}
+                        value={formData.username}
+                        placeholder='username'
+                    />
+                    </div>
+                    <div class='field'>
+                    <label style={{color: 'white'}}>Password: </label>
+                    <input
+                        type='text'
+                        name='password'
+                        onChange={handleLoginChange}
+                        value={formData.password}
+                        placeholder='password'
+                    />
+                    </div>
+                    <button class='ui button' type='submit'>Login</button>
+                </form>
+                </div>
+                <br />
+                <div className='loginForm'>
+                <h3 style={{color: 'white'}}>Don't have an account?</h3>
+                <Button onClick={toggleShowSignup}>Sign Up!</Button>
+                {showSignup ? 
+                <div className='signupForm'>
+                <Signup setCurrentUser={setCurrentUser}/>
+                </div> : null}
+                </div>
+            </div>
         </div>
     )
 }

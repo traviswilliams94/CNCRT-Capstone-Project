@@ -58,8 +58,10 @@ function Signup ({setCurrentUser}){
 
     return (
         <div>
-            <form className='postForm' onSubmit={handleSignup}>
-                <label>Name: </label>
+            <div className='loginForm'>
+            <form class='ui form' onSubmit={handleSignup}>
+                <div class="field">
+                <label style={{color: 'white'}}>Name: </label>
                 <input
                     type= 'text'
                     name='name'
@@ -68,8 +70,9 @@ function Signup ({setCurrentUser}){
                     placeholder='First and Last Name'
                 />
                 <span style={{color: 'red'}}>Required</span>
-                <br />
-                <label>Bio: </label>
+                </div>
+                <div class="field">
+                <label style={{color: 'white'}}>Bio: </label>
                 <input className='commentbox'
                     type= 'text'
                     name='bio'
@@ -77,8 +80,9 @@ function Signup ({setCurrentUser}){
                     value={signupData.bio}
                     placeholder='Short Bio'
                 />
-                <br />
-                <label>Username: </label>
+                </div>
+                <div class="field">
+                <label style={{color: 'white'}}>Username: </label>
                 <input
                     type= 'text'
                     name='username'
@@ -87,8 +91,9 @@ function Signup ({setCurrentUser}){
                     placeholder='Username'
                 />
                 <span style={{color: 'red'}}>Required</span>
-                <br />
-                <label>Password: </label>
+                </div>
+                <div class="field">
+                <label style={{color: 'white'}}>Password: </label>
                 <input
                     type= 'text'
                     name='password'
@@ -97,9 +102,10 @@ function Signup ({setCurrentUser}){
                     placeholder='Password'
                 />
                 <span style={{color: 'red'}}>Must be at least 8 characters</span>
-                <br />
-                <button type='submit'>Create Account</button>
+                </div>
+                <button class='ui button' type='submit'>Create Account</button>
             </form>
+            </div>
         </div>
     )
 }

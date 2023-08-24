@@ -1,11 +1,10 @@
 import React from "react";
-import {useState} from 'react';
 import TimelineCard from "./TimelineCard";
 
 function Home({ currentUser, userConcerts, userFestivals }){
 
     const concertObjects = userConcerts.map((concert) => ({
-        object_name: concert.concert_name,
+        object_name: concert.band_name,
         object_image: concert.concert_image,
         object_date: concert.date,
         object_where: concert.venue.venue_name,
@@ -33,26 +32,13 @@ function Home({ currentUser, userConcerts, userFestivals }){
         }
     })
 
-    // const evenTimelineConcerts = timelineConcerts.filter((a, i) => i % 2 === 0)
-    // const oddTimelineConcerts = timelineConcerts.filter((a, i) => i % 2 !== 0)
-
-    // const leftTimeline = evenTimelineConcerts.map((concert) => (
-    //     <div className="container left">
-    //         <TimelineCard key={concert.id} concert={concert} />
-    //     </div>
-    // ))
-
-    // const rightTimeline = oddTimelineConcerts.map((concert) => (
-    //     <div className="container right">
-    //         <TimelineCard key={concert.id} concert={concert} />
-    //         </div>
-    // ))
 
     return (
         <div className="home">
             <div>
-                <h1>Welcome to CNCRT, {currentUser.name}!</h1>
-                <h3>Your Timeline: </h3>
+                <br />
+                <h1>Welcome to your CNCRT Timeline, {currentUser.name}!</h1>
+                <br />
             </div>
             <div className="timeline">
                 {timelineDisplay}

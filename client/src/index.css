@@ -5,10 +5,28 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
-.NavLink {
-  padding-left: 30px;
+.App{
+  text-align: center;
+  /* background-image: url('./images/redrocksBackground.jpeg');
+  background-size: 2400px 1350px;
+  background-repeat: repeat-y; */
+  
+}
+
+/* NavBar and Header */
+
+#pageHeader {
+  background-image: url('./images/CNCRT.png');
+  background-repeat: no-repeat;
+  background-color: black;
+  background-position: 10%;
   align-items: center;
-  padding-right: 30px;
+  
+  height: 200px;
+}
+
+.sidebar {
+  background-color: black;
 }
 
 .concertDisplay {
@@ -79,6 +97,59 @@
   background-color: red;
   border-color: red;
   color: white;
+}
+
+/* Login Page */
+
+.loginPage {
+  background-image: url('./images/redrocksBackground.jpeg');
+  height: 1350px;
+  width: 2400px;
+  background-size: cover;
+  
+}
+
+.loginHeader{
+  background-image: url('./images/CNCRT.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 25%;
+  left: 50%;
+  width: 35em;
+  height: 15em;
+  margin-top: -9em;
+  margin-left: -15em;
+  background-color: black;
+  position: fixed;
+  color: white;
+}
+
+.loginContent {
+  top: 50%;
+  left: 50%;
+  width: 35em;
+  height: 25em;
+  margin-top: -9em;
+  margin-left: -15em;
+  border: 1px solid white;
+  background-color: black;
+  position: fixed;
+}
+
+.loginForm {
+  margin: 10px;
+}
+
+.signupForm {
+  top: 76%;
+  left: 50%;
+  width: 35em;
+  height: 31em;
+  margin-top: -9em;
+  margin-left: -15em;
+  border: 1px solid white;
+  background-color: black;
+  position: fixed;
 }
 
 /* Timeline Design */

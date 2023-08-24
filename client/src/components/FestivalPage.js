@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FestivalUtilities from "./FestivalUtilities";
 import FestivalContainer from "./FestivalContainer";
 
-function FestivalPage({currentUser,userFestivals, allFestBands}){
+function FestivalPage({currentUser,userFestivals}){
     const [festSearchState, setFestSearchState] =  useState('')
 
     
@@ -10,7 +10,7 @@ function FestivalPage({currentUser,userFestivals, allFestBands}){
     return (
         <div>
             <FestivalUtilities currentUser={currentUser} festSearchState={festSearchState} setFestSearchState={setFestSearchState}/>
-            <FestivalContainer userFestivals={userFestivals} festSearchState={festSearchState} allFestBands={allFestBands}/>
+            <FestivalContainer userFestivals={userFestivals} festSearchState={festSearchState} />
 
         </div>
     )

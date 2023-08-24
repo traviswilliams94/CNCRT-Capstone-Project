@@ -3,15 +3,18 @@ import { Card, Image, Button } from 'semantic-ui-react';
 import BandCard from "./BandCard";
 import AddFestBandForm from "./AddFestBandForm ";
 import { format, parse } from 'date-fns';
+import { useRecoilValue } from "recoil";
+import { festBandsAtom } from "../lib/atoms";
 
-function FestivalCard({festival, allFestBands}){
+function FestivalCard({festival}){
     const [festivalModal, setFestivalModal] = useState(false)
     const [addBand, setAddBand] = useState(false)
     const realStartDate = parse(festival.start_date, 'yyyy-MM-dd', new Date())
     const realEndDate = parse(festival.end_date, 'yyyy-MM-dd', new Date())
     const displayStartDate = format(realStartDate, "MMMM d, yyyy")
     const displayEndDate = format(realEndDate, "MMMM d, yyyy")
-
+    const allFestBands = useRecoilValue(festBandsAtom)
+    
     // const [updateFest, setUpdateFest] = useState({
     //     festival_name: festival.festival_name,
     //     city: festival.city,
