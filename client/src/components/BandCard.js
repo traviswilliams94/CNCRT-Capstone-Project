@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { Card, Icon, Image, Button } from 'semantic-ui-react';
+import React from "react";
+import { Card, Image } from 'semantic-ui-react';
 
 function BandCard({band}){
 
@@ -13,14 +13,14 @@ function BandCard({band}){
                             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                     </div>
-                    <Card.Content>
+                    <Card.Content >
                     <Card.Header>{band.band_name}</Card.Header>
                     <Card.Description>
                         <br />
                         <strong>Rating:</strong> {band.rating}
                         <br />
                         {band.setlist_link ? 
-                        <a target="_blank" href={band.setlist_link}>View Setlist</a> : null
+                        <a target="_blank"  rel="noreferrer" href={band.setlist_link}>View Setlist</a> : null
                         }
                         <br />
                         <br />

@@ -98,23 +98,22 @@ function FestivalCard({festival}){
             {festivalModal ? 
             <div className="modal">
                 <div className="overlay">
-                    <div className="modal-content">
-                        <h2>{festival.festival_name}</h2>
+                    <div className="modal-content" >
+                        <h1>{festival.festival_name}</h1>
                         <img src={festival.festival_image} alt={festival.festival_image} style={{ width: '50%', height: '50%', objectFit: 'cover' }}/>
                         <br />
-                        <span><strong>When: </strong>{displayStartDate} - {displayEndDate}</span>
+                        <span style={{fontSize: 'x-large'}}><strong>When: </strong>{displayStartDate} - {displayEndDate}</span>
                         <br />
-                        <span><strong>Where: </strong>{festival.city}</span>
-                        <br />
-                        <br />
-                        <span><strong>Rating:</strong> {festival.rating}</span>
+                        <span style={{fontSize: 'x-large'}}><strong>Where: </strong>{festival.city}</span>
                         <br />
                         <br />
-                        <span><strong>Comments: </strong>{festival.comments}</span>
+                        <span style={{fontSize: 'x-large'}}><strong>Rating:</strong> {festival.rating}</span>
                         <br />
                         <br />
-                        <h3>Artists: </h3>
-                        <button onClick={toggleAddBand}>+</button>
+                        <span style={{fontSize: 'large'}}><strong style={{fontSize: 'x-large'}}>Comments: </strong>{festival.comments}</span>
+                        <br />
+                        <br />
+                        <Button color='blue' onClick={toggleAddBand}>+ Artists</Button>
                         <div className="festBandDisplay">{bandCards}</div>
                         {/* <form onSubmit={handleUpdateSubmit}>
                             <label>Start Date: </label>
@@ -133,7 +132,8 @@ function FestivalCard({festival}){
                             />
                             <button type='submit'>Update Fetsival Dates</button>
                         </form> */}
-                        <button onClick={toggleFestivalModal}>Exit</button>
+                        <br />
+                        <Button color='red' onClick={toggleFestivalModal}>Exit</Button>
 
                     </div>
                         
@@ -145,7 +145,8 @@ function FestivalCard({festival}){
                         <div className="modal-content">
                             <h3>Add an Artist you saw at {festival.festival_name}</h3>
                             <AddFestBandForm festival={festival} addBand={addBand} setAddBand={setAddBand}/>
-                            <button onClick={toggleAddBand}>Exit</button>
+                            <br />
+                            <Button color='red' onClick={toggleAddBand}>Exit</Button>
                         </div>
                     </div>
                 </div>

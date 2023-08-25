@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import {Button} from 'semantic-ui-react';
 
-function AddFestivalForm({}){
+
+function AddFestivalForm(){
 
     const [festData, setFestData] = useState({
         festival_name: "",
@@ -22,6 +24,7 @@ function AddFestivalForm({}){
         });
     }
 
+
     function handleFestSubmit(){
 
         fetch('/festivals', {
@@ -37,9 +40,10 @@ function AddFestivalForm({}){
     }
 
     return (
-        <div>
-            <form className='postForm' onSubmit={handleFestSubmit}>
-                <label>Festival Name: </label>
+        <div className="addConcertForm">
+            <form class='ui form' onSubmit={handleFestSubmit}>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Festival Name: </label>
                 <input
                     type='text'
                     name='festival_name'
@@ -47,8 +51,10 @@ function AddFestivalForm({}){
                     value={festData.festival_name}
                     placeholder="Coachella 2023"
                 />
+                </div>
                 <br />
-                <label>City: </label>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>City: </label>
                 <input
                     type='text'
                     name='city'
@@ -56,8 +62,10 @@ function AddFestivalForm({}){
                     value={festData.city}
                     placeholder="Indio, CA"
                 />
+                </div>
                 <br />
-                <label>Start Date: </label>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Start Date: </label>
                 <input
                     type='text'
                     name='start_date'
@@ -65,8 +73,10 @@ function AddFestivalForm({}){
                     value={festData.start_date}
                     placeholder="April 17th, 2023"
                 />
+                </div>
                 <br />
-                <label>End Date: </label>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>End Date: </label>
                 <input
                     type='text'
                     name='end_date'
@@ -74,8 +84,10 @@ function AddFestivalForm({}){
                     value={festData.end_date}
                     placeholder="April 19th, 2023"
                 />
+                </div>
                 <br />
-                <label>Image: </label>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Image: </label>
                 <input
                     type="text"
                     name='festival_image'
@@ -83,8 +95,10 @@ function AddFestivalForm({}){
                     value={festData.festival_image}
                     placeholder="Enter link to image"
                 />
+                </div> 
                 <br />
-                <label>Rating: </label>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Rating: </label>
                 <input 
                     type='number'
                     name='rating'
@@ -92,8 +106,10 @@ function AddFestivalForm({}){
                     value={festData.rating}
                     placeholder='Enter your rating'
                 />
+                </div>
                 <br />
-                <label>Comments: </label>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Comments: </label>
                 <input className='commentbox'
                     type='text'
                     name='comments'
@@ -101,9 +117,8 @@ function AddFestivalForm({}){
                     value={festData.comments}
                     placeholder="Enter your comments"
                 />
-                <br />
-                <br />
-                <button type='submit'>Upload New Festival</button>
+                </div>
+                <Button color='blue' class='ui button' type='submit'>Upload New Festival</Button>
             </form>
         </div>
     )

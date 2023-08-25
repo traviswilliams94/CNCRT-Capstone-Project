@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AddConcertForm from "./AddConcertForm";
 import { Button } from 'semantic-ui-react';
 
@@ -21,19 +21,20 @@ function UtilitiesBar({currentUser, searchState, setSearchState, filterYear, set
         setVenueFilter(e.target.value)
     }
 
-   
 
 
     return (
         <div>
             <br />
-            <div className='searchbar'>
-                <label><strong>Search By Artist: </strong></label>
-                <input value={searchState} onChange={handleSearch} />
+            <div class='ui search'>
+                <label style={{fontSize: 'large'}}><strong>Search By Artist: </strong></label>
+                <input class='prompt' type='text'  placeholder="search lower case" value={searchState} onChange={handleSearch} />
+                
             </div>
             <br />
-            <strong>Filter by year: </strong>
-            <select onChange={handleYearChange} value={filterYear}>
+            <div className="yearfilter">
+            <strong style={{fontSize: 'large'}}>Filter by Year: </strong>
+            <select class='ui scrolling dropdown' onChange={handleYearChange} value={filterYear}>
                 <option value="">All</option>
                 <option value='2016'>2016</option>
                 <option value='2017'>2017</option>
@@ -47,19 +48,25 @@ function UtilitiesBar({currentUser, searchState, setSearchState, filterYear, set
                 <option value='2025'>2025</option>
                 <option value='2026'>2026</option>
             </select>
+            </div>
             <br />
-            <strong>Filter By Venue: </strong>
-            <select onChange={handleVenueFilter} value={venueFilter}>
+            <strong style={{fontSize: 'large'}}>Filter By Venue: </strong>
+            <select class='ui scrolling dropdown' onChange={handleVenueFilter} value={venueFilter}>
                 <option value="">All</option>
                 {venueOptions}
             </select>
             <br />
             <br />
             {showForm ? 
-            <AddConcertForm currentUser={currentUser}/> : null }
-            <Button onClick={handleShowForm}>Add a Concert</Button>
+            <div>
+            <AddConcertForm currentUser={currentUser}/> 
+            <br />
+            <Button onClick={handleShowForm}>Close Form</Button>
+            </div>
+            : 
+            <Button onClick={handleShowForm}>Add a Concert</Button>}
         </div>
     )
 }
-
+    
 export default UtilitiesBar;

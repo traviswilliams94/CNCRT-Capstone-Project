@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import {Button} from 'semantic-ui-react';
 
 function AddConcertForm({currentUser}){
     const [formData, setFormData]  = useState({
@@ -40,9 +41,10 @@ function AddConcertForm({currentUser}){
     }
 
     return(
-        <div>
-            <form className='postForm' onSubmit={handleConcertSubmit}>
-                <label>Artist Name: </label>
+        <div className="addConcertForm">
+            <form class='ui form' onSubmit={handleConcertSubmit}>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Artist Name: </label>
                 <input
                     type='text'
                     name='band_name'
@@ -50,15 +52,19 @@ function AddConcertForm({currentUser}){
                     value={formData.band_name}
                     placeholder="Enter Band name"
                 />
-                <label>Date: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Date: </label>
                 <input
                     type='text'
                     name='date'
                     onChange={handleFormChange}
                     value={formData.date}
-                    placeholder="Enter Date of show"
+                    placeholder="YYYY-MM-DD"
                 />
-                <label>Venue ID: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Venue ID: </label>
                 <input
                     type='number'
                     name='venue_id'
@@ -66,7 +72,9 @@ function AddConcertForm({currentUser}){
                     value={formData.venue_id}
                     placeholder="Enter venue ID"
                 />
-                <label>Opener: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Opener: </label>
                 <input
                     type='text'
                     name='opener'
@@ -74,7 +82,9 @@ function AddConcertForm({currentUser}){
                     value={formData.opener}
                     placeholder="Add openers separated by commas"
                 />
-                <label>Image: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Image: </label>
                 <input
                     type='text'
                     name='concert_image'
@@ -82,7 +92,9 @@ function AddConcertForm({currentUser}){
                     value={formData.concert_image}
                     placeholder="Enter link to image"
                 />
-                <label>Setlist: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Setlist: </label>
                 <input
                     type='text'
                     name='setlist_link'
@@ -90,7 +102,9 @@ function AddConcertForm({currentUser}){
                     value={formData.setlist_link}
                     placeholder="Add setlist from setlist.fm"
                 />
-                <label>Rating: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Rating: </label>
                 <input 
                     type='number'
                     name='rating'
@@ -98,7 +112,9 @@ function AddConcertForm({currentUser}){
                     value={formData.rating}
                     placeholder='Enter your rating'
                 />
-                <label>Comments: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Comments: </label>
                 <input className='commentbox'
                     type='text'
                     name='comments'
@@ -106,7 +122,8 @@ function AddConcertForm({currentUser}){
                     value={formData.comments}
                     placeholder="Enter your comments"
                 />
-                <button type='submit'>Upload New Concert</button>
+                </div>
+                <Button color='blue' class='ui button' type='submit'>Upload New Concert</Button>
             </form>
         </div>
     )

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Button} from 'semantic-ui-react';
 
 function AddVenueForm(){
     const [venueData, setVenueData] = useState({
@@ -31,9 +32,10 @@ function AddVenueForm(){
     }
 
     return (
-        <div>
-            <form className='postForm' onSubmit={handleVenueSubmit}>
-                <label>Venue Name: </label>
+        <div className="addConcertForm">
+            <form class='ui form' onSubmit={handleVenueSubmit}>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Venue Name: </label>
                 <input
                     type='text'
                     name='venue_name'
@@ -41,7 +43,9 @@ function AddVenueForm(){
                     value={venueData.venue_name}
                     placeholder='Enter venue name'
                 />
-                <label>City, State: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>City, State: </label>
                 <input
                     type='text'
                     name='city'
@@ -49,7 +53,9 @@ function AddVenueForm(){
                     value={venueData.city}
                     placeholder="ex: Denver, CO"
                 />
-                <label>Image: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large'}}>Image: </label>
                 <input
                     type='text'
                     name='image'
@@ -57,7 +63,8 @@ function AddVenueForm(){
                     value={venueData.image}
                     placeholder="Enter image url"
                 />
-                <button type='submit'>Upload New Venue</button>
+                </div>
+                <Button color='blue' class='ui button' type='submit'>Upload New Venue</Button>
             </form>
         </div>
     )

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Button} from 'semantic-ui-react';
 
 function UpdateConcertForm({concert, setUpdateModal}){
     const [updateData, setUpdateData]  = useState({
@@ -41,64 +42,80 @@ function UpdateConcertForm({concert, setUpdateModal}){
 
     return (
         <div>
-            <form id='updateconcert' onSubmit={handleUpdateSubmit}>
-                <label>Artist Name: </label>
+            <form class='ui form' onSubmit={handleUpdateSubmit}>
+                <div class="field">
+                <label style={{fontSize: 'large', color: 'white'}}>Artist Name: </label>
                 <input
                     type='text'
                     name='band_name'
                     onChange={handleUpdateChange}
                     value={updateData.band_name}
                 />
-                <label>Date: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large', color: 'white'}}>Date: </label>
                 <input
                     type='text'
                     name='date'
                     onChange={handleUpdateChange}
                     value={updateData.date}
                 />
-                <label>Venue ID: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large', color: 'white'}}>Venue ID: </label>
                 <input
                     type='number'
                     name='venue_id'
                     onChange={handleUpdateChange}
                     value={updateData.venue_id}
                 />
-                <label>Opener: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large', color: 'white'}}>Opener: </label>
                 <input
                     type='text'
                     name='opener'
                     onChange={handleUpdateChange}
                     value={updateData.opener}
                 />
-                <label>Image: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large', color: 'white'}}>Image: </label>
                 <input
                     type='text'
                     name='concert_image'
                     onChange={handleUpdateChange}
                     value={updateData.concert_image}
                 />
-                <label>Setlist: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large', color: 'white'}}>Setlist: </label>
                 <input
                     type='text'
                     name='setlist_link'
                     onChange={handleUpdateChange}
                     value={updateData.setlist_link}
                 />
-                <label>Rating: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large', color: 'white'}}>Rating: </label>
                 <input 
                     type='number'
                     name='rating'
                     onChange={handleUpdateChange}
                     value={updateData.rating}
                 />
-                <label>Comments: </label>
+                </div>
+                <div class="field">
+                <label style={{fontSize: 'large', color: 'white'}}>Comments: </label>
                 <input className='commentbox'
                     type='text'
                     name='comments'
                     onChange={handleUpdateChange}
                     value={updateData.comments}
                 />
-                <button className="updatemodalbutton" type='submit'>Update</button>
+                </div>
+                <Button color='blue' class='ui button' type='submit'>Update</Button>
             </form>
         </div>
     )

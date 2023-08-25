@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import VenueContainer from "./VenueContainer";
 import AddVenueForm from "./AddVenueForm";
 import { allVenuesAtom } from "../lib/atoms";
 import { useRecoilValue } from "recoil";
+import { Button } from 'semantic-ui-react';
 
 function VenuePage(){
     const [showVenueForm, setShowVenueForm] = useState(false)
@@ -14,7 +15,7 @@ function VenuePage(){
     })
 
     function handleShowVenueForm(){
-        setShowVenueForm((showVenueForm) => !showVenueForm)
+        setShowVenueForm(!showVenueForm)
     }
 
     return (
@@ -23,9 +24,17 @@ function VenuePage(){
             <br />
             <VenueContainer orderedVenues={orderedVenues}/>
             <br />
-            {showVenueForm ? <AddVenueForm /> :
-            <h3>Don't see your venue?</h3>}
-            <button onClick={handleShowVenueForm}>Add a Venue</button>
+            {showVenueForm ?
+            <div>
+                <AddVenueForm />
+                <br />
+                <Button onClick={handleShowVenueForm}>Close Form</Button>
+            </div>
+             :
+             <div>
+            <h3>Don't see your venue?</h3>
+            <Button onClick={handleShowVenueForm}>Add a Venue</Button>
+            </div>}
         </div>
     )
 

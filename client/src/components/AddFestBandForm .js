@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Button} from 'semantic-ui-react';
 
 function AddFestBandForm({festival, addBand, setAddBand}){
     const [bandData, setBandData] = useState({
@@ -38,8 +39,9 @@ function AddFestBandForm({festival, addBand, setAddBand}){
 
     return (
         <div>
-            <form className='postForm' onSubmit={handleAddBand}>
-            <label>Artist Name: </label>
+            <form class='ui form' onSubmit={handleAddBand}>
+            <div class="field">
+            <label style={{color: 'white'}}>Artist Name: </label>
             <input
                     type='text'
                     name='band_name'
@@ -47,8 +49,10 @@ function AddFestBandForm({festival, addBand, setAddBand}){
                     value={bandData.band_name}
                     placeholder="Enter Artist name"
                 />
+            </div>
             <br />
-            <label>Image: </label>
+            <div class="field">
+            <label style={{color: 'white'}}>Image: </label>
             <input
                     type='text'
                     name='band_image'
@@ -56,8 +60,10 @@ function AddFestBandForm({festival, addBand, setAddBand}){
                     value={bandData.band_image}
                     placeholder="Enter Image URL"
                 />
+            </div>
             <br />
-            <label>Setlist: </label>
+            <div class="field">
+            <label style={{color: 'white'}}>Setlist: </label>
             <input
                     type='text'
                     name='setlist_link'
@@ -65,8 +71,10 @@ function AddFestBandForm({festival, addBand, setAddBand}){
                     value={bandData.setlist_link}
                     placeholder="Enter Setlist link from Setlist.fm"
                 />
+            </div>
             <br />
-            <label>Rating: </label>
+            <div class="field">
+            <label style={{color: 'white'}}>Rating: </label>
             <input
                     type='number'
                     name='rating'
@@ -74,8 +82,10 @@ function AddFestBandForm({festival, addBand, setAddBand}){
                     value={bandData.rating}
                     placeholder="Enter Your Rating"
                 />
+            </div>
             <br />
-            <label>Comments: </label>
+            <div class="field">
+            <label style={{color: 'white'}}>Comments: </label>
             <input
                     type='text'
                     name='comments'
@@ -83,8 +93,8 @@ function AddFestBandForm({festival, addBand, setAddBand}){
                     value={bandData.comments}
                     placeholder="Enter Your Comments"
                 />
-            <br />
-            <button type='submit'>Add New Band to Festival</button>
+            </div>
+            <Button color='blue' class='ui button' type='submit'>Add New Band to Festival</Button>
             </form>
         </div>
     )

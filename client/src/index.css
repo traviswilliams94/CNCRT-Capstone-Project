@@ -30,8 +30,6 @@
   background-color: black;
 }
 
-
-
 .concertDisplay {
   display: flex;
   flex-wrap: wrap;
@@ -39,8 +37,11 @@
   justify-content: center;
   margin: auto;
   padding-top: 75px;
+  padding-bottom: 75px;
   background-color: black;
 }
+
+/* modals */
 
 .modal {
   width: 100vw;
@@ -71,10 +72,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background: #f1f1f1;
+  background: black;
+  color: white;
   padding: 14px 28px;
   border-radius: 3px;
-  max-height: calc(100vh - 350px);
+  max-height: calc(100vh - 300px);
   overflow-y: auto;
   max-width: 1000px;
   min-width: 300px;
@@ -154,6 +156,13 @@
   border: 1px solid white;
   background-color: black;
   position: fixed;
+}
+
+.addConcertForm {
+  width: 35em;
+  max-height: 50em;
+  margin-top: 0;
+  margin-left: 40%;
 }
 
 /* Timeline Design */

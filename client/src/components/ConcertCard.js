@@ -61,7 +61,7 @@ function ConcertCard({concert}){
                     <strong>Rating:</strong> {concert.rating}
                     <br />
                     {concert.setlist_link ? 
-                    <a target="_blank" href={concert.setlist_link}>View Setlist</a> : null
+                    <a target="_blank" rel="noreferrer" href={concert.setlist_link}>View Setlist</a> : null
                     }
                     <br />
                     <br />
@@ -101,19 +101,24 @@ function ConcertCard({concert}){
             <div className="modal">
             <div className="overlay">
             <div className="modal-content">
-              <h3>Update the {concert.band_name} concert:</h3>
-              <strong>Notes: </strong>
-              <p>• Only adjust the fields you want to update</p>
-              <p>• Add new comments after existing commenets to keep the existing</p>
+              <h1>Update the {concert.band_name} concert:</h1>
+              <br />
+              <div>
+                <p style={{fontSize: 'large'}}>• Only adjust the fields you want to update</p>
+                <p style={{fontSize: 'large'}}>• Add new comments after existing comments to keep the existing</p>
+                <p style={{fontSize: 'large'}}>• Dates must be formatted YYYY-MM-DD</p>
+              </div>
+              <br />
               <div>
                 <UpdateConcertForm concert={concert} setUpdateModal={setUpdateModal}/>
               </div>
               {/* <button className="updatemodalbutton" onClick={toggleUpdateModal}>
                 Update
               </button> */}
-              <button onClick={toggleUpdateModal}>
+              <br />
+              <Button color="red" onClick={toggleUpdateModal}>
                 Exit
-              </button>
+              </Button>
             </div>
             </div>
           </div> : null

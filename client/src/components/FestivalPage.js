@@ -10,6 +10,7 @@ function FestivalPage({currentUser,userFestivals}){
     return (
         <div>
             <FestivalUtilities currentUser={currentUser} festSearchState={festSearchState} setFestSearchState={setFestSearchState}/>
+            <br  />
             <FestivalContainer userFestivals={userFestivals} festSearchState={festSearchState} />
 
         </div>
