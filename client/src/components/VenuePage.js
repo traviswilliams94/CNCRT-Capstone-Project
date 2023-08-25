@@ -19,6 +19,8 @@ function VenuePage(){
 
     return (
         <div>
+            <br />
+            <br />
             <VenueContainer orderedVenues={orderedVenues}/>
             <br />
             {showVenueForm ? <AddVenueForm /> :

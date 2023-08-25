@@ -35,7 +35,7 @@ function ConcertCard({concert}){
     return (
         <div>
             <div style={{ marginLeft: '5%', paddingBottom: '1%'}}>
-            <Card style={{ height: '400px'}} 
+            <Card style={{ height: '400px', marginBottom: '10px'}} 
             onMouseEnter={() => {
                 setShowButton({display: 'grid'});
             }}

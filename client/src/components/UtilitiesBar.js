@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AddConcertForm from "./AddConcertForm";
+import { Button } from 'semantic-ui-react';
 
 function UtilitiesBar({currentUser, searchState, setSearchState, filterYear, setFilterYear, venueOptions, venueFilter, setVenueFilter}){
     const [showForm, setShowForm] = useState(false)
@@ -27,7 +28,7 @@ function UtilitiesBar({currentUser, searchState, setSearchState, filterYear, set
         <div>
             <br />
             <div className='searchbar'>
-                <strong>Search By Artist: </strong>
+                <label><strong>Search By Artist: </strong></label>
                 <input value={searchState} onChange={handleSearch} />
             </div>
             <br />
@@ -56,7 +57,7 @@ function UtilitiesBar({currentUser, searchState, setSearchState, filterYear, set
             <br />
             {showForm ? 
             <AddConcertForm currentUser={currentUser}/> : null }
-            <button onClick={handleShowForm}>Add a Concert</button>
+            <Button onClick={handleShowForm}>Add a Concert</Button>
         </div>
     )
 }

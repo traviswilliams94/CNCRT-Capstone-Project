@@ -21,6 +21,7 @@
   background-color: black;
   background-position: 10%;
   align-items: center;
+  margin-top: 2%;
   
   height: 200px;
 }
@@ -29,13 +30,16 @@
   background-color: black;
 }
 
+
+
 .concertDisplay {
   display: flex;
   flex-wrap: wrap;
   width: 1500px;
   justify-content: center;
   margin: auto;
-  padding-top: 75px
+  padding-top: 75px;
+  background-color: black;
 }
 
 .modal {
@@ -70,7 +74,7 @@
   background: #f1f1f1;
   padding: 14px 28px;
   border-radius: 3px;
-  max-height: calc(100vh - 210px);
+  max-height: calc(100vh - 350px);
   overflow-y: auto;
   max-width: 1000px;
   min-width: 300px;
