@@ -86,7 +86,7 @@ function AddFestBandForm({festival, addBand, setAddBand}){
             <br />
             <div class="field">
             <label style={{color: 'white'}}>Comments: </label>
-            <input
+            <textarea
                     type='text'
                     name='comments'
                     onChange={handleBandFormChange}

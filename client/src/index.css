@@ -92,17 +92,13 @@
   padding-top: 75px
 }
 
-.keepmodalbutton {
-  background-color: green;
-  border-color: green;
-  margin-right: 50%;
-  color: white;
-}
+/* Account Page */
 
-.deletemodalbutton {
-  background-color: red;
-  border-color: red;
-  color: white;
+.accountpage {
+  float: left;
+  margin-top: 2%;
+  margin-left: 10%;
+  text-align: left;
 }
 
 /* Login Page */
@@ -160,7 +156,7 @@
 
 .addConcertForm {
   width: 35em;
-  max-height: 50em;
+  max-height: 60em;
   margin-top: 0;
   margin-left: 40%;
 }

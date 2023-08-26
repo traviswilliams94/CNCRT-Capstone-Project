@@ -108,7 +108,7 @@ function UpdateConcertForm({concert, setUpdateModal}){
                 </div>
                 <div class="field">
                 <label style={{fontSize: 'large', color: 'white'}}>Comments: </label>
-                <input className='commentbox'
+                <textarea className='commentbox'
                     type='text'
                     name='comments'
                     onChange={handleUpdateChange}

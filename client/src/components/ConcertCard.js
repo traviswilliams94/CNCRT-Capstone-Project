@@ -86,13 +86,13 @@ function ConcertCard({concert}){
             <p>
               Once deleted, it cannot be recovered.
             </p>
-            <button className="keepmodalbutton" onClick={toggleDeleteModal}>
+            <Button color='green' onClick={toggleDeleteModal}>
               No, Keep
-            </button>
+            </Button>
             
-            <button className="deletemodalbutton" onClick={deleteConcert}>
+            <Button color='red' style={{marginLeft: '250px'}} onClick={deleteConcert}>
               Yes, Delete
-            </button>
+            </Button>
           </div>
           </div>
         </div> : null

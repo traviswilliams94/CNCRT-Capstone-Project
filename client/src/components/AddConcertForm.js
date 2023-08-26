@@ -115,7 +115,7 @@ function AddConcertForm({currentUser}){
                 </div>
                 <div class="field">
                 <label style={{fontSize: 'large'}}>Comments: </label>
-                <input className='commentbox'
+                <textarea className='commentbox'
                     type='text'
                     name='comments'
                     onChange={handleFormChange}

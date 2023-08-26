@@ -110,7 +110,7 @@ function AddFestivalForm(){
                 <br />
                 <div class="field">
                 <label style={{fontSize: 'large'}}>Comments: </label>
-                <input className='commentbox'
+                <textarea className='commentbox'
                     type='text'
                     name='comments'
                     onChange={handleFestFormChange}
