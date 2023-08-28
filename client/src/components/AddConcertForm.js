@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import {Button} from 'semantic-ui-react';
 import isMatch from 'date-fns/isMatch';
+import { allVenuesAtom } from "../lib/atoms";
+import { useRecoilValue } from "recoil";
 
-function AddConcertForm({currentUser}){
+function AddConcertForm(){
+   
+    const venues = useRecoilValue(allVenuesAtom)
+
+    const venueSelect = venues.map((venue) => (
+        <option value={venue.id}>{venue.venue_name}</option>
+    ))
+
     const [formData, setFormData]  = useState({
         // user_id: currentUser.id,
         band_name: "",
@@ -73,13 +82,17 @@ function AddConcertForm({currentUser}){
                 </div>
                 <div class="field">
                 <label style={{fontSize: 'large'}}>Venue: </label>
-                <input
+                <select type='select-one' name='venue_id' onChange={handleFormChange} >
+                <option value=""></option>
+                {venueSelect}
+                </select>
+                {/* <input
                     type='number'
                     name='venue_id'
                     onChange={handleFormChange}
                     value={formData.venue_id}
                     placeholder="Enter venue ID"
-                />
+                /> */}
                 </div>
                 <div class="field">
                 <label style={{fontSize: 'large'}}>Opener: </label>
