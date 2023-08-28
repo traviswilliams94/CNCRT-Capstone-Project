@@ -66,6 +66,23 @@ class Logout(Resource):
             return {}, 204
         return {'error': '401 Unauthorized'}, 401
 
+class UserUpdate(Resource):
+    def patch(self, id):
+        user_to_update =  User.query.filter(User.id == id).first()
+
+        if user_to_update:
+            for key in request.json:
+                setattr(user_to_update, key, request.json[key])
+            db.session.add(user_to_update)
+            db.session.commit()
+
+            return make_response(user_to_update.to_dict(), 202)
+        
+        else:
+            return {'error': 'User not found'}, 404
+        
+
+
 
 class Concerts(Resource):
     def get(self):
@@ -219,7 +236,7 @@ api.add_resource(Festivals, '/festivals')
 api.add_resource(FestivalBands, '/festivalbands')
 api.add_resource(FestivalsByID, '/festivals/<int:id>')
 
-
+api.add_resource(UserUpdate, '/users/<int:id>')
 api.add_resource(UserSignup, '/users')
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 api.add_resource(Login, '/login', endpoint='login')

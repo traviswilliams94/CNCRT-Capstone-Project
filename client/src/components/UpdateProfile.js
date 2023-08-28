@@ -8,7 +8,6 @@ function UpdateProfile({toggleUpdateProfile, currentUser}){
         name: currentUser.name,
         bio: currentUser.bio,
         username: currentUser.username,
-        password: currentUser.password,
     })
 
     function handleProfileChange(event){
@@ -62,14 +61,6 @@ function UpdateProfile({toggleUpdateProfile, currentUser}){
                             name='username'
                             onChange={handleProfileChange}
                             value={userData.username}
-                        />
-                        <br />
-                        <label>Password: </label>
-                        <input
-                            type='text'
-                            name='password'
-                            onChange={handleProfileChange}
-                            value={userData.password}
                         />
                         <br />
                         <br />
