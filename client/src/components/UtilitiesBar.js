@@ -59,7 +59,7 @@ function UtilitiesBar({currentUser, searchState, setSearchState, filterYear, set
             <br />
             {showForm ? 
             <div>
-            <AddConcertForm currentUser={currentUser}/> 
+            <AddConcertForm currentUser={currentUser} venueOptions={venueOptions}/> 
             <br />
             <Button onClick={handleShowForm}>Close Form</Button>
             </div>

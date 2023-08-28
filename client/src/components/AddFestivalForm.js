@@ -1,5 +1,7 @@
+import { isMatch } from "date-fns";
 import React, { useState } from "react";
 import {Button} from 'semantic-ui-react';
+
 
 
 function AddFestivalForm(){
@@ -25,8 +27,8 @@ function AddFestivalForm(){
     }
 
 
-    function handleFestSubmit(){
-
+    function handleFestSubmit(event){
+        if (isMatch(festData.start_date, 'yyyy-MM-dd') && (isMatch(festData.end_date, 'yyyy-MM-dd'))) {
         fetch('/festivals', {
             method: 'POST',
             headers: {
@@ -38,6 +40,13 @@ function AddFestivalForm(){
         .then((res) => res.json())
         .then((newFestival) => console.log(newFestival))
     }
+    else {
+        event.preventDefault();
+        return (
+            alert('Dates must be in yyyy-MM-dd format')
+        )
+    }
+}
 
     return (
         <div className="addConcertForm">
@@ -71,7 +80,7 @@ function AddFestivalForm(){
                     name='start_date'
                     onChange={handleFestFormChange}
                     value={festData.start_date}
-                    placeholder="April 17th, 2023"
+                    placeholder="2023-04-17"
                 />
                 </div>
                 <br />
@@ -82,7 +91,7 @@ function AddFestivalForm(){
                     name='end_date'
                     onChange={handleFestFormChange}
                     value={festData.end_date}
-                    placeholder="April 19th, 2023"
+                    placeholder="2023-04-19"
                 />
                 </div>
                 <br />

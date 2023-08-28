@@ -2,6 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.hybrid import hybrid_property
+import re
 
 from config import db, bcrypt
 
@@ -37,6 +38,12 @@ class User(db.Model, SerializerMixin):
         return bcrypt.check_password_hash(
             self._password_hash, password.encode('utf-8'))
 
+    @validates('username')
+    def validate_username(self, key, username):
+        if not (4 <= len(username) <= 16):
+            raise ValidationError("Username must be between 4 and 16 characters")
+        return username
+
 
 class Concert(db.Model, SerializerMixin):
     __tablename__ = 'concerts'
@@ -53,6 +60,7 @@ class Concert(db.Model, SerializerMixin):
     date = db.Column(db.String)
 
     serialize_rules = ('-user_id', '-venue_id')
+
 
 
 class Venue(db.Model, SerializerMixin):

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import {Button} from 'semantic-ui-react';
+import isMatch from 'date-fns/isMatch';
 
 function AddConcertForm({currentUser}){
     const [formData, setFormData]  = useState({
         // user_id: currentUser.id,
         band_name: "",
         date: "",
-        venue_id: 0,
+        venue_id: 1,
         opener: "",
         concert_image: "",
         setlist_link: "",
@@ -14,7 +15,7 @@ function AddConcertForm({currentUser}){
         comments: "",
     })
 
-
+    
     function handleFormChange(event){
         const name = event.target.name;
         let value = event.target.value
@@ -26,8 +27,8 @@ function AddConcertForm({currentUser}){
     }
 
     function handleConcertSubmit(event){
-        // event.preventDefault();
-
+        
+        if (isMatch(formData.date, 'yyyy-MM-dd')) {
         fetch('/concerts', {
             method: 'POST',
             headers: {
@@ -38,6 +39,13 @@ function AddConcertForm({currentUser}){
         })
         .then((res) => res.json())
         .then((newConcert) => console.log(newConcert))
+     }
+        else {
+            event.preventDefault();
+            return (
+                alert('Date must be in yyyy-MM-dd format')
+            )
+        }
     }
 
     return(
@@ -64,7 +72,7 @@ function AddConcertForm({currentUser}){
                 />
                 </div>
                 <div class="field">
-                <label style={{fontSize: 'large'}}>Venue ID: </label>
+                <label style={{fontSize: 'large'}}>Venue: </label>
                 <input
                     type='number'
                     name='venue_id'
