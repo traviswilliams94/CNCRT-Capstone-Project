@@ -7,12 +7,14 @@ import ConcertPage from './ConcertPage';
 import VenuePage from "./VenuePage";
 import FestivalPage from "./FestivalPage";
 import AccountPage from "./AccountPage";
+import ConcertBuddies from "./ConcertBuddies";
 import { useRecoilState } from "recoil";
 import { allVenuesAtom, festBandsAtom } from "../lib/atoms";
 
 function App() {
   const [page, setPage] = useState('/login')
   const [currentUser, setCurrentUser] = useState(false);
+  const [allUsers, setAllUsers] = useState([])
   const [allConcerts, setAllConcerts] = useState([]);
   const [allVenues, setAllVenues] = useRecoilState(allVenuesAtom);
   const [allFestivals, setAllFestivals] = useState([]);
@@ -26,6 +28,7 @@ function App() {
 const userFestivals = allFestivals.filter(
   (festival) => festival.user.id === currentUser.id
 );
+
 
   useEffect(() => {
     fetch("/check_session")
@@ -69,7 +72,13 @@ const userFestivals = allFestivals.filter(
     });
   }, []);
 
-
+  useEffect(() => {
+    fetch('http://127.0.0.1:5555/users')
+    .then(res => res.json())
+    .then(data => {
+      setAllUsers(data)
+    });
+  }, []);
 
   const handleLogout = () => {
     fetch("/logout", {method: "DELETE"})
@@ -91,6 +100,7 @@ const userFestivals = allFestivals.filter(
       <Route path='/concerts' element={<ConcertPage userConcerts={userConcerts} currentUser={currentUser} />}></Route>
       <Route path='/festivals' element={<FestivalPage userFestivals={userFestivals} currentUser={currentUser} />}></Route>
       <Route path='/venues' element={<VenuePage />}></Route>
+      <Route path='/concertbuddies' element={<ConcertBuddies allUsers={allUsers} allConcerts={allConcerts} allFestivals={allFestivals} />}></Route>
       <Route path='/account' element={<AccountPage currentUser={currentUser} userConcerts={userConcerts} userFestivals={userFestivals} handleLogout={handleLogout}/>}></Route>
     </Routes>
 

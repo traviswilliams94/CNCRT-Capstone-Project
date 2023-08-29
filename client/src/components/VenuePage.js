@@ -28,7 +28,7 @@ function VenuePage(){
             <div>
                 <AddVenueForm />
                 <br />
-                <Button onClick={handleShowVenueForm}>Close Form</Button>
+                <Button style={{marginBottom: '25px'}} onClick={handleShowVenueForm}>Close Form</Button>
             </div>
              :
              <div>

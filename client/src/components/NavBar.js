@@ -41,10 +41,17 @@ function NavBar(){
             </Menu.Item>
             </NavLink>
 
-            <NavLink to='venues'>
+            <NavLink to='/venues'>
             <Menu.Item >
             <Icon name='building' />
             Venues
+            </Menu.Item>
+            </NavLink>
+
+            <NavLink to='/concertbuddies'>
+            <Menu.Item >
+            <Icon name='users' />
+            Concert Buddies
             </Menu.Item>
             </NavLink>
 

@@ -14,6 +14,9 @@ from models import User, Concert, Venue, Festival, FestivalBand
 
 # Views go here!
 class UserSignup(Resource):
+    def get(self):
+        users = [user.to_dict() for user in User.query.all()]
+        return make_response(users, 200)
 
     def post(self):
         data = request.get_json()

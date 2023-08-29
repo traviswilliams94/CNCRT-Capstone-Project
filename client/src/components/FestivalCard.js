@@ -115,23 +115,6 @@ function FestivalCard({festival}){
                         <br />
                         <Button color='blue' onClick={toggleAddBand}>+ Artists</Button>
                         <div className="festBandDisplay">{bandCards}</div>
-                        {/* <form onSubmit={handleUpdateSubmit}>
-                            <label>Start Date: </label>
-                            <input
-                                type='text'
-                                name='start_date'
-                                onChange={handleUpdateChange}
-                                value={updateFest.start_date}
-                            />
-                            <label>End Date: </label>
-                            <input 
-                                type='text'
-                                name='end_date'
-                                onChange={handleUpdateChange}
-                                value={updateFest.end_date}
-                            />
-                            <button type='submit'>Update Fetsival Dates</button>
-                        </form> */}
                         <br />
                         <Button color='red' onClick={toggleFestivalModal}>Exit</Button>
 
@@ -157,3 +140,21 @@ function FestivalCard({festival}){
 }
 
 export default FestivalCard;
+
+{/* <form onSubmit={handleUpdateSubmit}>
+                            <label>Start Date: </label>
+                            <input
+                                type='text'
+                                name='start_date'
+                                onChange={handleUpdateChange}
+                                value={updateFest.start_date}
+                            />
+                            <label>End Date: </label>
+                            <input 
+                                type='text'
+                                name='end_date'
+                                onChange={handleUpdateChange}
+                                value={updateFest.end_date}
+                            />
+                            <button type='submit'>Update Fetsival Dates</button>
+                        </form> */}
