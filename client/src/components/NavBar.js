@@ -36,7 +36,7 @@ function NavBar(){
 
             <NavLink to='/festivals'>
             <Menu.Item >
-            <Icon name='users' />
+            <Icon name='map' />
             My Festivals
             </Menu.Item>
             </NavLink>
