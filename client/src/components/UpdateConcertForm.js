@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import {Button} from 'semantic-ui-react';
+import { allVenuesAtom } from "../lib/atoms";
+import { useRecoilValue } from "recoil";
 
 function UpdateConcertForm({concert, setUpdateModal}){
+
+    const venues = useRecoilValue(allVenuesAtom)
+
+    const venueSelect = venues.map((venue) => (
+        <option value={venue.id}>{venue.venue_name}</option>
+    ))
+
     const [updateData, setUpdateData]  = useState({
     
         band_name: concert.band_name,
@@ -23,6 +32,7 @@ function UpdateConcertForm({concert, setUpdateModal}){
             [name]: value,
         });
     }
+
 
     function handleUpdateSubmit(){
         fetch(`concerts/${concert.id}`, {
@@ -62,13 +72,16 @@ function UpdateConcertForm({concert, setUpdateModal}){
                 />
                 </div>
                 <div class="field">
-                <label style={{fontSize: 'large', color: 'white'}}>Venue ID: </label>
-                <input
+                <label style={{fontSize: 'large', color: 'white'}}>Venue: </label>
+                <select type='select-one' name='venue_id' onChange={handleUpdateChange} value={updateData.venue_id} >
+                {venueSelect}
+                </select>
+                {/* <input
                     type='number'
                     name='venue_id'
                     onChange={handleUpdateChange}
                     value={updateData.venue_id}
-                />
+                /> */}
                 </div>
                 <div class="field">
                 <label style={{fontSize: 'large', color: 'white'}}>Opener: </label>
