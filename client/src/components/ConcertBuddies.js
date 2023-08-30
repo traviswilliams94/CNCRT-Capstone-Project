@@ -42,6 +42,7 @@ function ConcertBuddies({allUsers, allConcerts, allFestivals}){
 
     return(
         <div>
+            <br />
             <div>
             <strong style={{fontSize: 'large'}}>Choose Your Concert Buddy: </strong>
             <select type='select-one' class='ui scrolling dropdown' onChange={handleBuddy} value={buddyFilter}>
